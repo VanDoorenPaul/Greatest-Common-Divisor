@@ -2,8 +2,8 @@
 % and with regular part in Smith form of size rxr and degree d 
 % The left and right factors M and N of P=M.La.N have degree k
 % 
-d=2;m=4;n=3;r=2;k=2;imax=3;
-Table=zeros(10,7);
+d=2;m=4;n=3;r=2;k=3;imax=3;
+Table=zeros(10,10);
 for itest=1:10,
 La=zeros(m,n,d+1);smithzero=[];
 for i=1:r,
@@ -19,19 +19,20 @@ P=PxN(PxN(M,La),N);
 normP=norm(P(:));
 P=P/normP;
 % We also set tol 
-tol=10000*eps;
-P=Trim(P,tol)
+tol=1000000*eps;
+P=Trim(P,tol);
 % now run the GCRDr algorithm
-[N,G]=GCRDr(P,tol)
+[N,G]=GCRDr(P,tol);
 G=Trim(G,eps);
 N=Trim(N,eps);
 % residual errors for factorization and roots
 Res=Trim(PxN(N,G),tol)-P;
 dn=size(N,3)-1;dg=size(G,3)-1;
+nr=size(G,1);
 resFactor=norm(Res(:));
-resZero=ResGzero(G,smithzero)
-smithzero'
-Table(itest,:)=[norm(N(:)),norm(G(:)),resFactor,resZero];
+resZero=ResGzero(G,smithzero);
+smithzero';
+Table(itest,:)=[norm(N(:)),norm(G(:)),resFactor,resZero,dn,dg,nr];
 end
 format short e
 Table

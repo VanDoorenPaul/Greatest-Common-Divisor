@@ -1,20 +1,21 @@
 function [Q,Z,E,A,mcur,ncur,s,t] = Staircase(E,A,Q,Z,r,tol)
 %
-% function [Q,Z,E,A,df,s,t] = Staircase(E,A,Q,Z,r,tol)
+% function [Q,Z,E,A,mcur,ncur,s,t] = Staircase(E,A,Q,Z,r,tol)
 %
 % transforms a pencil [A1 A2]-s[E1 E2] where the second block has
 % r columns, to a strict equivalent block triangular pencil
 %
-% [A11 A12 A13 A14]  [E11 E12 E13 E14]
-% [ 0  A22 A23 A24]-s[ 0  E22 E23 E24]
-% [ 0   0  A33 A34]  [ 0   0  E33 E34]
+% [A11 A12 A13]  [E11 E12 E13]
+% [ 0  A22 A23]-s[ 0  E22 E23]
 %
-% where A22-sE22 contains the df zeros of the pencil A1-sE1 and
-% the pencil [A11]-s[E11] contains its right minimal indices. 
+% where A11-sE11 contains the finite zeros and the
+% right minimal indices of the pencil A1-sE1 and
+% where A22-sE22 contains its left minimal indices
 % The tolerance for the rank checks is tol.
 %
-% The routine returns the unitary transformations Q and Z
-% and the sets of dimensions s and t of the diagonal blocks.
+% The routine returns the updated unitary transformations Q and Z
+% the sets of dimensions s and t of the diagonal blocks of A22-sE22
+% and the dimension mcur x ncur of the subpencil A11-sE11
 %
 mn=size(E);mcur=mn(1);ncur=mn(2)-r;
 s=zeros(1,0);t=zeros(1,0);

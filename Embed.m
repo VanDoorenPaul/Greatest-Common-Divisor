@@ -1,12 +1,14 @@
 function [Q,Z,E,A,C,Ahat,s,t,k] = Embed(E,A,C,Q,Z,tol)
 %
-%  function [Q,Z,E,A,df,t] = Embed(E,A,Q,Z,tol)
+%  function [Q,Z,E,A,C,Ahat,s,t,k] = Embed(E,A,C,Q,Z,tol)
 %  embeds a full row rank pencil  [A22 A23]-s[E22 E23] 
 %  to a form Q'([A22 A23]-s[E22 E23])Z
 %               [       Ahat       ]
 %  that is unimodular, by making use of the staircase algorithm
 %  and a constant matrix Ahat. The rank check tolerance is tol.
-%  The routine returns the unitary transformations Q and Z 
+%  The routine returns 
+%  the updated unitary transformations Q and Z,
+%  the updated matrices E, A and C, 
 %  the sets of dimensions s, t and k of the diagonal blocks
 %  and the constant embedding Ahat
 %

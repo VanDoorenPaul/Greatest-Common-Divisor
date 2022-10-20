@@ -3,7 +3,7 @@ function [Qright,Mr,r] = ColCompR(M,tol)
 %   function [Qright,Mr,r]=ColCompR(M,tol)
 %
 %  compresses the columns of M to r linearly independent  
-%  columns in the right of the matrix Mr = M*Qright.
+%  columns to the right side of the matrix Mr = M*Qright.
 %  Here r=rank(M,tol) with tol a chosen tolerance.
 %
 mn = size(M); m = mn(1); n = mn(2);

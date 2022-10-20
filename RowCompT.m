@@ -3,7 +3,7 @@ function [Qleft,Mr,r] = RowCompT(M,tol)
 %   function [Qleft,Mr,r]=RowCompT(M,tol)
 %
 %  compresses the rows M to r linearly independent rows 
-%  at the top of the matrix Mr = Qleft'*M.
+%  to the top of the matrix Mr = Qleft'*M.
 %  Here r=rank(M,tol) with tol a chosen tolerance.
 %
 mn = size(M); m = mn(1); n = mn(2); 
